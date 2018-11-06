@@ -1,0 +1,15 @@
+{
+  "name": "vgcore",
+  "version": "0.17.0",
+  "description": "Type definitions for VGCore (CorelDRAW)",
+  "scripts": {},
+  "author": "Sanich Kotikov <sancho@cdrpro.ru> (https://sanichkotikov.github.io)",
+  "license": "MIT",
+  "files": [
+    "index.d.ts"
+  ],
+  "bugs": {
+    "url": "https://github.com/SanichKotikov/vgcore/issues"
+  },
+  "homepage": "https://github.com/SanichKotikov/vgcore"
+}
