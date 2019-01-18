@@ -1,15 +1,29 @@
 {
   "name": "vgcore",
-  "version": "0.17.0",
-  "description": "Type definitions for VGCore (CorelDRAW)",
-  "scripts": {},
+  "version": "0.17.1",
+  "description": "Type definitions and utilities for VGCore (CorelDRAW)",
+  "main": "lib/index.js",
+  "typings": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SanichKotikov/vgcore.git"
+  },
   "author": "Sanich Kotikov <sancho@cdrpro.ru> (https://sanichkotikov.github.io)",
   "license": "MIT",
+  "scripts": {
+    "start": "tsc --watch",
+    "build": "tsc"
+  },
   "files": [
+    "lib",
     "index.d.ts"
   ],
   "bugs": {
     "url": "https://github.com/SanichKotikov/vgcore/issues"
   },
+  "devDependencies": {
+    "typescript": "3.2.4"
+  },
+  "dependencies": {},
   "homepage": "https://github.com/SanichKotikov/vgcore"
 }

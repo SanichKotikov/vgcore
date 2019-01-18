@@ -3,8 +3,36 @@
 
 interface External {
   Application: VGCore.Application;
-  RegisterEventListener(EventName: string, Callback: string): void;
-  UnregisterEventListener(EventName: string): void;
+  RegisterEventListener(EventName: cdrEventName, Callback: string): void;
+  UnregisterEventListener(EventName: cdrEventName): void;
+}
+
+export const enum cdrEventName {
+  ObjectTransformed = 'ObjectTransformed',
+  StateChange = 'StateChange',
+  TextSelectionChange = 'TextSelectionChange',
+  DocUnitChange = 'DocUnitChange',
+  TextAttributeChange = 'TextAttributeChange',
+  SelectionChange = 'SelectionChange',
+  NewDocument = 'NewDocument',
+  CloseDocument = 'CloseDocument',
+  ColourPaletteChange = 'ColourPaletteChange',
+  ActiveViewChange = 'ActiveViewChange',
+  ZoomLevelChange = 'ZoomLevelChange',
+  ActivePageChange = 'ActivePageChange',
+  ViewMappingChange = 'ViewMappingChange',
+  ViewScroll = 'ViewScroll',
+  AppStarted = 'AppStarted',
+  AppShuttingDown = 'AppShuttingDown',
+  DockerStateChanged = 'DockerStateChanged',
+  OutlineAttributeChange = 'OutlineAttributeChange',
+  FillAttributeChange = 'FillAttributeChange',
+  CurveEditedChange = 'CurveEditedChange',
+  MacroSetChange = 'MacroSetChange',
+  PageTypeChange = 'PageTypeChange',
+  NodeSelectionChanged = 'NodeSelectionChanged',
+  TableTool_CellSelectionChanged = 'TableTool_CellSelectionChanged',
+  TableCore_TableModified = 'TableCore_TableModified',
 }
 
 export const enum cdrAlignment {
@@ -718,3 +746,13 @@ declare namespace VGCore {
   }
 
 }
+
+// Utils:
+
+export const app: VGCore.Application;
+
+export function registerEvent(name: cdrEventName, callback: Function): void;
+export function unregisterEvent(name: cdrEventName): void;
+
+export function boostStart(): void;
+export function boostFinish(): void;
