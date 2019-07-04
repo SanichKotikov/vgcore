@@ -424,33 +424,16 @@ declare namespace VGCore {
   }
 
   interface CorelScriptTools {
-    GetFileBox(): string;
-    GetFileBox(Filter: string): string;
-    GetFileBox(Filter: string, Title: string): string;
-    GetFileBox(Filter: string, Title: string, Type: fileBoxType): string;
-    GetFileBox(Filter: string, Title: string, Type: fileBoxType, File: string): string;
-    GetFileBox(Filter: string, Title: string, Type: fileBoxType, File: string, Extension: string): string;
     GetFileBox(
-      Filter: string,
-      Title: string,
-      Type: fileBoxType,
-      File: string,
-      Extension: string,
-      Folder: string,
+      Filter?: string,
+      Title?: string,
+      Type?: fileBoxType,
+      File?: string,
+      Extension?: string,
+      Folder?: string,
+      Button?: string,
     ): string;
-    GetFileBox(
-      Filter: string,
-      Title: string,
-      Type: fileBoxType,
-      File: string,
-      Extension: string,
-      Folder: string,
-      Button: string,
-    ): string;
-    GetFolder(): string;
-    GetFolder(InitFolder: string): string;
-    GetFolder(InitFolder: string, Title: string): string;
-    GetFolder(InitFolder: string, Title: string, ParentWindowHandle: number): string;
+    GetFolder(InitFolder?: string, Title?: string, ParentWindowHandle?: number): string;
   }
 
   interface Curve {}
@@ -471,17 +454,12 @@ declare namespace VGCore {
     AddPages(NumberOfPages: number): Page;
     AddToSelection(...ShapeArray: Shape[]): void;
     ClearSelection(): void;
-    CreateFill(): Fill;
-    CreateFill(FillString: string): Fill;
-    CreateOutline(): Outline;
-    CreateOutline(OutlineString: string): Outline;
+    CreateFill(FillString?: string): Fill;
+    CreateOutline(OutlineString?: string): Outline;
     Duplicate(): Document;
-    RestoreSettings(): void;
-    RestoreSettings(Tag: string): void;
-    SaveSettings(): void;
-    SaveSettings(Tag: string): void;
-    Undo(): void;
-    Undo(Levels: number): void;
+    RestoreSettings(Tag?: string): void;
+    SaveSettings(Tag?: string): void;
+    Undo(Levels?: number): void;
   }
 
   interface Documents {
@@ -512,85 +490,67 @@ declare namespace VGCore {
 
   interface GMSProjects {
     readonly Count: number;
-    Load(FileName: string): GMSProject;
-    Load(FileName: string, CopyFile: boolean): GMSProject;
-    Load(FileName: string, CopyFile: boolean, ForAllUsers: boolean): GMSProject;
+    Load(FileName: string, CopyFile?: boolean, ForAllUsers?: boolean): GMSProject;
   }
 
   interface Layer {
     readonly IsSpecialLayer: boolean;
     Activate(): void;
-    CreateArtisticText(Left: number, Bottom: number, Text: string): Shape;
-    CreateArtisticText(Left: number, Bottom: number, Text: string, LanguageID: cdrTextLanguage): Shape;
     CreateArtisticText(
       Left: number,
       Bottom: number,
       Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
+      LanguageID?: cdrTextLanguage,
+      CharSet?: cdrTextCharSet,
+      Font?: string,
+      Size?: number,
+      Bold?: boolean | cdrTriState,
+      Italic?: boolean | cdrTriState,
+      Underline?: cdrFontLine,
+      Alignment?: cdrAlignment,
     ): Shape;
-    CreateArtisticText(
+    CreateArtisticTextWide(
       Left: number,
       Bottom: number,
       Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
-      Font: string,
+      LanguageID?: cdrTextLanguage,
+      CharSet?: cdrTextCharSet,
+      Font?: string,
+      Size?: number,
+      Bold?: boolean | cdrTriState,
+      Italic?: boolean | cdrTriState,
+      Underline?: cdrFontLine,
+      Alignment?: cdrAlignment,
     ): Shape;
-    CreateArtisticText(
+    CreateParagraphText(
       Left: number,
+      Top: number,
+      Right: number,
       Bottom: number,
-      Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
-      Font: string,
-      Size: number,
+      Text?: string,
+      LanguageID?: cdrTextLanguage,
+      CharSet?: cdrTextCharSet,
+      Font?: string,
+      Size?: number,
+      Bold?: boolean | cdrTriState,
+      Italic?: boolean | cdrTriState,
+      Underline?: cdrFontLine,
+      Alignment?: cdrAlignment,
     ): Shape;
-    CreateArtisticText(
+    CreateParagraphTextWide(
       Left: number,
+      Top: number,
+      Right: number,
       Bottom: number,
-      Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
-      Font: string,
-      Size: number,
-      Bold: boolean | cdrTriState,
-    ): Shape;
-    CreateArtisticText(
-      Left: number,
-      Bottom: number,
-      Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
-      Font: string,
-      Size: number,
-      Bold: boolean | cdrTriState,
-      Italic: boolean | cdrTriState,
-    ): Shape;
-    CreateArtisticText(
-      Left: number,
-      Bottom: number,
-      Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
-      Font: string,
-      Size: number,
-      Bold: boolean | cdrTriState,
-      Italic: boolean | cdrTriState,
-      Underline: cdrFontLine,
-    ): Shape;
-    CreateArtisticText(
-      Left: number,
-      Bottom: number,
-      Text: string,
-      LanguageID: cdrTextLanguage,
-      CharSet: cdrTextCharSet,
-      Font: string,
-      Size: number,
-      Bold: boolean | cdrTriState,
-      Italic: boolean | cdrTriState,
-      Underline: cdrFontLine,
-      Alignment: cdrAlignment,
+      Text?: string,
+      LanguageID?: cdrTextLanguage,
+      CharSet?: cdrTextCharSet,
+      Font?: string,
+      Size?: number,
+      Bold?: boolean | cdrTriState,
+      Italic?: boolean | cdrTriState,
+      Underline?: cdrFontLine,
+      Alignment?: cdrAlignment,
     ): Shape;
     CreateRectangle2(x: number, y: number, Width: number, Height: number): Shape;
     Delete(): void;
@@ -617,10 +577,7 @@ declare namespace VGCore {
     SizeWidth: number;
     Activate(): void;
     CreateLayer(LayerName: string): Layer;
-    FindShape(Name: string): Shape;
-    FindShape(Name: string, Type: cdrShapeType): Shape;
-    FindShape(Name: string, Type: cdrShapeType, StaticID: number): Shape;
-    FindShape(Name: string, Type: cdrShapeType, StaticID: number, Recursive: boolean): Shape;
+    FindShape(Name: string, Type?: cdrShapeType, StaticID?: number, Recursive?: boolean): Shape;
     //GetSize(Width: number, Height: number): void;
     Delete(): void;
   }
@@ -666,8 +623,7 @@ declare namespace VGCore {
     Delete(): void;
     Rotate(Angle: number): void;
     SetPosition(PositionX: number, PositionY: number): void;
-    SetSize(Width: number): void;
-    SetSize(Width: number, Height: number): void;
+    SetSize(Width: number, Height?: number): void;
   }
 
   interface ShapeRange {
@@ -681,26 +637,18 @@ declare namespace VGCore {
     SizeWidth: number;
     Item(IndexOrName: number | string): Shape;
     MoveToLayer(Layer: Layer): void;
-    SetBoundingBox(x: number, y: number, Width: number, Height: number): void;
-    SetBoundingBox(x: number, y: number, Width: number, Height: number, KeepAspect: boolean): void;
     SetBoundingBox(
       x: number,
       y: number,
       Width: number,
       Height: number,
-      KeepAspect: boolean,
-      ReferencePoint: cdrReferencePoint
+      KeepAspect?: boolean,
+      ReferencePoint?: cdrReferencePoint
     ): void;
     SetPosition(PositionX: number, PositionY: number): void;
-    SetSize(Width: number): void;
-    SetSize(Width: number, Height: number): void;
-    // SetSizeEx(CenterX: number, CenterY: number): void;
-    // SetSizeEx(CenterX: number, CenterY: number, Width: number): void;
-    // SetSizeEx(CenterX: number, CenterY: number, Width: number, Height: number): void;
-    Sort(CompareExpression: string): void;
-    Sort(CompareExpression: string, StartIndex: number): void;
-    Sort(CompareExpression: string, StartIndex: number, EndIndex: number): void;
-    Sort(CompareExpression: string, StartIndex: number, EndIndex: number, Data: any): void;
+    SetSize(Width: number, Height?: number): void;
+    // SetSizeEx(CenterX: number, CenterY: number, Width?: number, Height?: number): void;
+    Sort(CompareExpression: string, StartIndex?: number, EndIndex?: number, Data?: any): void;
   }
 
   interface Shapes {
