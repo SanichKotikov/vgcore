@@ -1,6 +1,6 @@
 {
   "name": "vgcore",
-  "version": "0.17.2",
+  "version": "0.17.3",
   "description": "Type definitions and utilities for VGCore (CorelDRAW)",
   "main": "lib/index.js",
   "typings": "index.d.ts",

@@ -380,6 +380,13 @@ export const enum cdrUnit {
   cdrUnitH = 16,
 }
 
+export const enum cdrVerticalAlignment {
+  cdrTopJustify = 0,
+  cdrCenterJustify = 1,
+  cdrBottomJustify = 2,
+  cdrFullJustify = 3,
+}
+
 export const enum fileBoxType {
   open = 0,
   saveAs = 1,
@@ -658,8 +665,13 @@ declare namespace VGCore {
   }
 
   interface Text {
+    readonly Frame: TextFrame;
     readonly Story: TextRange;
     readonly Type: cdrTextType;
+  }
+
+  interface TextFrame {
+    VerticalAlignment: cdrVerticalAlignment;
   }
 
   interface TextRange {
